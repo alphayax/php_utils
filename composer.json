@@ -1,0 +1,15 @@
+{
+  "name": "alphayax/php_utils",
+  "description": "Classes utilitaires pour PHP",
+  "minimum-stability": "dev",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Yann Ponzoni",
+      "email": "alphayax@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {"alphayax\\": "./"}
+  }
+}
