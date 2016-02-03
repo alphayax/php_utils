@@ -17,14 +17,20 @@ class Rest {
     /** @var bool Indicate if the return is in JSON format */
     protected $_isJson = true;
 
+    /** @var bool */
+    protected $_returnAsArray = true;
+
     /**
      * Rest constructor.
      * @param $_url
      * @param bool $isJson
+     * @param bool $returnAsArray
      */
-    public function __construct( $_url, $isJson = true){
-        $this->_curl_handler = curl_init( $_url);
-        $this->_isJson = $isJson;
+    public function __construct( $_url, $isJson = true, $returnAsArray = true){
+        $this->_curl_handler  = curl_init( $_url);
+        $this->_isJson        = $isJson;
+        $this->_returnAsArray = $returnAsArray;
+
     }
 
     /**
@@ -95,7 +101,7 @@ class Rest {
 
         // Decode JSON if we need to
         if( $this->_isJson){
-            $this->_curl_response = json_decode( $this->_curl_response);
+            $this->_curl_response = json_decode( $this->_curl_response, $this->_returnAsArray);
         }
         $this->_curl_response;
     }
