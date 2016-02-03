@@ -1,12 +1,12 @@
 <?php
-namespace alphayax\utils;
+namespace alphayax\utils\cli;
 
 /**
- * Class Cli
- * @package alphayax\utils
+ * Class IO
+ * @package alphayax\utils\cli
  * @author <alphayax@gmail.com>
  */
-class Cli {
+class IO {
 
 	/// Default Streams
 	const STREAM_STDOUT = 'php://stdout';

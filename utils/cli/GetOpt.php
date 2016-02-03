@@ -1,14 +1,6 @@
 <?php
-namespace alphayax\utils;
+namespace alphayax\utils\cli;
 
-// Todo test and enrich
-
-$opt = new GetOpt();
-$opt->addShortOpt('a', "AAA");
-$opt->addShortOpt('b', "BBB");
-$opt->addShortOpt('c', "CCC", true);
-$opt->addShortOpt('d', "DDD", false, true);
-$opt->parse();
 
 /**
  * Class GetOpt
@@ -16,16 +8,18 @@ $opt->parse();
  */
 class GetOpt {
 
-
+    /** @var array Required options */
     protected $requiredOpt = [];
+
+    /** @var array List of short options */
     private $shortOpt = [];
+
+    /** @var array List of long options */
     private $longOpt = [];
 
+    /** @var array Args passed to the script */
     private $opt_x = [];
 
-    public function __construct(){
-
-    }
 
     /**
      * @param $optName
@@ -60,7 +54,7 @@ class GetOpt {
     }
 
     /**
-     *
+     * Parse the args given to the script
      */
     public function parse(){
         $shortOptz = implode( '', array_keys( $this->shortOpt));
@@ -76,6 +70,7 @@ class GetOpt {
     }
 
     /**
+     * Return the value of a specific option
      * @param $optionName
      * @return mixed
      */
@@ -84,6 +79,7 @@ class GetOpt {
     }
 
     /**
+     * Return true if the option have been specified in script args
      * @param $optionName
      * @return bool
      */
