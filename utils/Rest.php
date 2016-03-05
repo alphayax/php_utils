@@ -20,6 +20,9 @@ class Rest {
     /** @var bool Indicate if the return is in JSON format */
     protected $_isJson = true;
 
+    /** @var bool Send post data in Json or not */
+    protected $_sendInJson = true;
+
     /** @var bool */
     protected $_returnAsArray = true;
 
@@ -85,7 +88,8 @@ class Rest {
      */
     protected function addPostFields( $curl_post_data){
         if( ! is_null( $curl_post_data)){
-            curl_setopt( $this->_curl_handler, CURLOPT_POSTFIELDS, json_encode( $curl_post_data));
+            $data = $this->_sendInJson ? json_encode( $curl_post_data) : $curl_post_data;
+            curl_setopt( $this->_curl_handler, CURLOPT_POSTFIELDS, $data);
         }
     }
 
@@ -94,6 +98,7 @@ class Rest {
      */
     public function setContentType_XFormURLEncoded(){
         $this->http_headers[ 'Content-Type'] = 'application/x-www-form-urlencoded';
+        $this->_sendInJson = false;
     }
 
     /**
