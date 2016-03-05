@@ -14,6 +14,9 @@ class Rest {
     /** @var array */
     protected $_curl_response;
 
+    /** @var array of HTTP Headers */
+    protected $http_headers = [];
+
     /** @var bool Indicate if the return is in JSON format */
     protected $_isJson = true;
 
@@ -87,10 +90,32 @@ class Rest {
     }
 
     /**
+     * Define the content type as "application/x-www-form-urlencoded"
+     */
+    public function setContentType_XFormURLEncoded(){
+        $this->http_headers[ 'Content-Type'] = 'application/x-www-form-urlencoded';
+    }
+
+    /**
+     * Define HTTP Headers in the REST call
+     */
+    protected function processHeaders(){
+        if( empty( $this->http_headers)){
+            return;
+        }
+        $HTTP_headers = [];
+        foreach( $this->http_headers as $http_header_name => $http_header_value){
+            $HTTP_headers[] = "$http_header_name: $http_header_value";
+        }
+        curl_setopt( $this->_curl_handler, CURLOPT_HTTPHEADER, $HTTP_headers);
+    }
+
+    /**
      * Execute the HTTP request
      * @throws \Exception
      */
     private function exec(){
+        $this->processHeaders();
         $this->_curl_response = curl_exec( $this->_curl_handler);
         if( $this->_curl_response === false) {
             $info = curl_getinfo( $this->_curl_handler);
