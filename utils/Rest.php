@@ -102,6 +102,14 @@ class Rest {
     }
 
     /**
+     * Define the content type as "multipart/form-data"
+     */
+    public function setContentType_MultipartFormData(){
+        $this->http_headers[ 'Content-Type'] = 'multipart/form-data';
+        $this->_sendInJson = false;
+    }
+
+    /**
      * Define HTTP Headers in the REST call
      */
     protected function processHeaders(){
