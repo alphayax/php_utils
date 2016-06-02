@@ -2,7 +2,8 @@
   "name": "alphayax/php_utils",
   "description": "Classes utilitaires pour PHP",
   "minimum-stability": "dev",
-  "license": "proprietary",
+  "prefer-stable": true,
+  "license": "LGPL-2.1",
   "authors": [
     {
       "name": "Yann Ponzoni",
@@ -10,6 +11,8 @@
     }
   ],
   "autoload": {
-    "psr-4": {"alphayax\\": "./"}
+    "psr-4": {
+      "alphayax\\": "./"
+    }
   }
 }

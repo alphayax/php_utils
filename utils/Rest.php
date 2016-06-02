@@ -94,10 +94,19 @@ class Rest {
     }
 
     /**
+     * Add a specific Header
+     * @param string $headerName
+     * @param string $headerContent
+     */
+    public function addHeader( $headerName, $headerContent) {
+        $this->http_headers[ $headerName] = $headerContent;
+    }
+    
+    /**
      * Define the content type as "application/x-www-form-urlencoded"
      */
     public function setContentType_XFormURLEncoded(){
-        $this->http_headers[ 'Content-Type'] = 'application/x-www-form-urlencoded';
+        $this->addHeader( 'Content-Type', 'application/x-www-form-urlencoded');
         $this->_sendInJson = false;
     }
 
@@ -105,7 +114,7 @@ class Rest {
      * Define the content type as "multipart/form-data"
      */
     public function setContentType_MultipartFormData(){
-        $this->http_headers[ 'Content-Type'] = 'multipart/form-data';
+        $this->addHeader( 'Content-Type', 'multipart/form-data');
         $this->_sendInJson = false;
     }
 

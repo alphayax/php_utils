@@ -1,3 +1,8 @@
 
 # Intelliji Files
 /.idea/
+
+# Composer
+/vendor
+/composer.phar
+
