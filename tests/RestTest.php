@@ -6,7 +6,6 @@
 class RestTest extends PHPUnit_Framework_TestCase {
 
 
-
     public function testConstruct() {
         $rest = new \alphayax\utils\Rest( 'https://api.github.com/users/alphayax/repos');
         $this->assertAttributeEquals( true, '_isJson', $rest);
