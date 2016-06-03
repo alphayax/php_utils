@@ -5,15 +5,10 @@
  */
 class RestTest extends PHPUnit_Framework_TestCase {
 
-
     public function testConstruct() {
         $rest = new \alphayax\utils\Rest( 'https://api.github.com/users/alphayax/repos');
         $this->assertAttributeEquals( true, '_isJson', $rest);
         $this->assertAttributeEquals( true, '_returnAsArray', $rest);
-    //    $rest->addHeader( 'User-Agent', 'alphayax-php_utils');
-//        $rest->GET();
-
-  //      $rest->getCurlResponse();
     }
 
     public function testHeader() {
@@ -22,6 +17,11 @@ class RestTest extends PHPUnit_Framework_TestCase {
         $rest->addHeader( 'User-Agent', 'alphayax-php_utils');
         $this->assertAttributeNotEmpty( 'http_headers', $rest);
         $this->assertAttributeEquals( ['User-Agent'=> 'alphayax-php_utils'], 'http_headers', $rest);
+        $this->assertAttributeCount(1, 'http_headers', $rest);
+        $rest->setContentType_MultipartFormData();
+        $this->assertAttributeCount(2, 'http_headers', $rest);
+        $rest->setContentType_XFormURLEncoded();
+        $this->assertAttributeCount(2, 'http_headers', $rest);
     }
 
     public function testGET() {
@@ -57,7 +57,9 @@ class RestTest extends PHPUnit_Framework_TestCase {
         $this->assertAttributeNotEmpty( '_curl_response', $rest);
     }
 
-    
-
+    public function testDELETE() {
+        $rest = new \alphayax\utils\Rest( 'http://jsonplaceholder.typicode.com/posts/1');
+        $rest->DELETE();
+    }
 
 }
