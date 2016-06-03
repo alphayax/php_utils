@@ -28,7 +28,7 @@ class Rest {
 
     /**
      * Rest constructor.
-     * @param $_url
+     * @param string $_url
      * @param bool $isJson
      * @param bool $returnAsArray
      */
