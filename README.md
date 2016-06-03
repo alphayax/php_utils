@@ -7,12 +7,13 @@
 [![License](https://poser.pugx.org/alphayax/php_utils/license)](https://packagist.org/packages/alphayax/php_utils)
 [![Travis](https://travis-ci.org/alphayax/php_utils.svg)](https://travis-ci.org/alphayax/php_utils)
 [![Coverage Status](https://coveralls.io/repos/github/alphayax/php_utils/badge.svg?branch=master)](https://coveralls.io/github/alphayax/php_utils?branch=master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/8bfe4b0f7bbb414b94502353e520cbac)](https://www.codacy.com/app/alphayax/php_utils?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=alphayax/php_utils&amp;utm_campaign=Badge_Grade)
 
 A set of PHP utilities class
 
 ## Rest
 
-A tiny class using curl in oriented style
+A tiny class using curl in object oriented style
 
 ```php
 $rest = new \alphayax\utils\Rest( 'https://api.github.com/users/alphayax/repos');
@@ -27,6 +28,15 @@ print_r( $rest->getCurlResponse());
 ### GetOpt
 
 A class to parse parameters given to a script
+
+```php
+$Args = new GetOpt();
+$Args->addShortOpt( 'v', 'Enable verbose mode');
+$Args->addLongOpt( 'verbose'    , 'Enable verbose mode');
+$Args->parse();
+
+$isVerbose = $Args->hasOption( 'v') || $Args->hasOption( 'verbose');
+```
 
 ### IO
 
