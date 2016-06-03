@@ -4,16 +4,16 @@ php:
   - '5.6'
   - '7.0'
 
+
 install:
+  - curl -s http://getcomposer.org/installer | php
+  - php composer.phar install --dev --no-interaction
   - composer dump-autoload
 
-before_script:
-  - wget http://getcomposer.org/composer.phar
-  - php composer.phar install --dev --no-interaction
-
 script:
+  - mkdir -p build/cov
   - mkdir -p build/logs
-  - phpunit --coverage-clover build/logs/clover.xml
+  - php vendor/bin/phpunit -c phpunit.xml.dist
 
 after_success:
   - travis_retry php vendor/bin/coveralls -v
