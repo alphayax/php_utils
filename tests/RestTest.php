@@ -1,7 +1,5 @@
 <?php
 
-require_once '../vendor/autoload.php';
-
 /**
  * Class RestTest
  */
@@ -35,7 +33,7 @@ class RestTest extends PHPUnit_Framework_TestCase {
         $rest->GET();
         $this->assertAttributeNotEmpty( '_curl_response', $rest);
     }
-    
+
     
 
 
