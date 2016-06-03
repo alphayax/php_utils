@@ -6,6 +6,7 @@
 [![Latest Unstable Version](https://poser.pugx.org/alphayax/php_utils/v/unstable)](https://packagist.org/packages/alphayax/php_utils)
 [![License](https://poser.pugx.org/alphayax/php_utils/license)](https://packagist.org/packages/alphayax/php_utils)
 [![Travis](https://travis-ci.org/alphayax/php_utils.svg)](https://travis-ci.org/alphayax/php_utils)
+[![Coverage Status](https://coveralls.io/repos/github/alphayax/php_utils/badge.svg?branch=master)](https://coveralls.io/github/alphayax/php_utils?branch=master)
 
 A set of PHP utilities class
 
