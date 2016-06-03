@@ -12,8 +12,9 @@
   ],
   "require-dev": {
     "phpunit/phpunit": "^4.8.9",
+    "phpunit/phpcov": "2.*",
     "satooshi/php-coveralls": "dev-master",
-    "phpunit/phpcov": "2.*"
+    "codacy/coverage": "dev-master"
   },
   "autoload": {
     "psr-4": {
