@@ -30,8 +30,6 @@ class Directory {
         foreach ( $files as $file_rfi){
             $file_afi = $this->directory_afi . DIRECTORY_SEPARATOR . $file_rfi;
 
-            echo $file_afi . PHP_EOL;
-
             /// Ignore pointers
             if( $file_rfi == '.' || $file_rfi == '..'){
                 continue;
