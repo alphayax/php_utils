@@ -9,6 +9,7 @@ install:
   - curl -s http://getcomposer.org/installer | php
   - php composer.phar install --dev --no-interaction
   - composer dump-autoload
+  - 03d0ce5ac7714c70b6db750b93396c87
 
 script:
   - mkdir -p build/cov
