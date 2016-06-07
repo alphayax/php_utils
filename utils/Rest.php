@@ -9,87 +9,87 @@ namespace alphayax\utils;
 class Rest {
 
     /** @var resource */
-    protected $_curl_handler;
+    protected $curlHandler;
 
     /** @var array */
-    protected $_curl_response;
+    protected $curlResponse;
 
     /** @var array of HTTP Headers */
-    protected $http_headers = [];
+    protected $httpHeaders = [];
 
     /** @var bool Indicate if the return is in JSON format */
-    protected $_isJson = true;
+    protected $isJson = true;
 
     /** @var bool Send post data in Json or not */
-    protected $_sendInJson = true;
+    protected $sendInJson = true;
 
     /** @var bool */
-    protected $_returnAsArray = true;
+    protected $returnAsArray = true;
 
     /**
      * Rest constructor.
-     * @param string $_url
-     * @param bool $isJson
-     * @param bool $returnAsArray
+     * @param string $url
+     * @param bool   $isJson
+     * @param bool   $returnAsArray
      */
-    public function __construct( $_url, $isJson = true, $returnAsArray = true){
-        $this->_curl_handler  = curl_init( $_url);
-        $this->_isJson        = $isJson;
-        $this->_returnAsArray = $returnAsArray;
+    public function __construct( $url, $isJson = true, $returnAsArray = true){
+        $this->curlHandler   = curl_init( $url);
+        $this->isJson        = $isJson;
+        $this->returnAsArray = $returnAsArray;
 
     }
 
     /**
      * Perform a GET request
-     * @param $curl_post_data
+     * @param $curlPostData
      */
-    public function GET( $curl_post_data = null){
-        curl_setopt( $this->_curl_handler, CURLOPT_RETURNTRANSFER, true);
-        $this->addPostFields( $curl_post_data);
+    public function GET( $curlPostData = null){
+        curl_setopt( $this->curlHandler, CURLOPT_RETURNTRANSFER, true);
+        $this->addPostFields( $curlPostData);
         $this->exec();
     }
 
     /**
      * Perform a POST request
-     * @param $curl_post_data
+     * @param $curlPostData
      */
-    public function POST( $curl_post_data = null){
-        curl_setopt( $this->_curl_handler, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt( $this->_curl_handler, CURLOPT_POST, true);
-        $this->addPostFields( $curl_post_data);
+    public function POST( $curlPostData = null){
+        curl_setopt( $this->curlHandler, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt( $this->curlHandler, CURLOPT_POST, true);
+        $this->addPostFields( $curlPostData);
         $this->exec();
     }
 
     /**
      * Perform a PUT request
-     * @param $curl_post_data
+     * @param $curlPostData
      */
-    public function PUT( $curl_post_data = null){
-        curl_setopt( $this->_curl_handler, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt( $this->_curl_handler, CURLOPT_CUSTOMREQUEST, 'PUT');
-        $this->addPostFields( $curl_post_data);
+    public function PUT( $curlPostData = null){
+        curl_setopt( $this->curlHandler, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt( $this->curlHandler, CURLOPT_CUSTOMREQUEST, 'PUT');
+        $this->addPostFields( $curlPostData);
         $this->exec();
     }
 
     /**
      * Perform a DELETE request
-     * @param $curl_post_data
+     * @param $curlPostData
      */
-    public function DELETE( $curl_post_data = null){
-        curl_setopt( $this->_curl_handler, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt( $this->_curl_handler, CURLOPT_CUSTOMREQUEST, 'DELETE');
-        $this->addPostFields( $curl_post_data);
+    public function DELETE( $curlPostData = null){
+        curl_setopt( $this->curlHandler, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt( $this->curlHandler, CURLOPT_CUSTOMREQUEST, 'DELETE');
+        $this->addPostFields( $curlPostData);
         $this->exec();
     }
 
     /**
      * Add the Post Fields (if not null)
-     * @param $curl_post_data
+     * @param $curlPostData
      */
-    protected function addPostFields( $curl_post_data){
-        if( ! is_null( $curl_post_data)){
-            $data = $this->_sendInJson ? json_encode( $curl_post_data) : $curl_post_data;
-            curl_setopt( $this->_curl_handler, CURLOPT_POSTFIELDS, $data);
+    protected function addPostFields( $curlPostData){
+        if( ! is_null( $curlPostData)){
+            $data = $this->sendInJson ? json_encode( $curlPostData) : $curlPostData;
+            curl_setopt( $this->curlHandler, CURLOPT_POSTFIELDS, $data);
         }
     }
 
@@ -99,7 +99,7 @@ class Rest {
      * @param string $headerContent
      */
     public function addHeader( $headerName, $headerContent) {
-        $this->http_headers[ $headerName] = $headerContent;
+        $this->httpHeaders[ $headerName] = $headerContent;
     }
     
     /**
@@ -107,7 +107,7 @@ class Rest {
      */
     public function setContentType_XFormURLEncoded(){
         $this->addHeader( 'Content-Type', 'application/x-www-form-urlencoded');
-        $this->_sendInJson = false;
+        $this->sendInJson = false;
     }
 
     /**
@@ -115,21 +115,21 @@ class Rest {
      */
     public function setContentType_MultipartFormData(){
         $this->addHeader( 'Content-Type', 'multipart/form-data');
-        $this->_sendInJson = false;
+        $this->sendInJson = false;
     }
 
     /**
      * Define HTTP Headers in the REST call
      */
     protected function processHeaders(){
-        if( empty( $this->http_headers)){
+        if( empty( $this->httpHeaders)){
             return;
         }
-        $HTTP_headers = [];
-        foreach( $this->http_headers as $http_header_name => $http_header_value){
-            $HTTP_headers[] = "$http_header_name: $http_header_value";
+        $HttpHeaders = [];
+        foreach( $this->httpHeaders as $httpHeaderName => $httpHeaderValue){
+            $HttpHeaders[] = "$httpHeaderName: $httpHeaderValue";
         }
-        curl_setopt( $this->_curl_handler, CURLOPT_HTTPHEADER, $HTTP_headers);
+        curl_setopt( $this->curlHandler, CURLOPT_HTTPHEADER, $HttpHeaders);
     }
 
     /**
@@ -138,26 +138,26 @@ class Rest {
      */
     private function exec(){
         $this->processHeaders();
-        $this->_curl_response = curl_exec( $this->_curl_handler);
-        if( $this->_curl_response === false) {
-            $info = curl_getinfo( $this->_curl_handler);
-            curl_close( $this->_curl_handler);
+        $this->curlResponse = curl_exec( $this->curlHandler);
+        if( $this->curlResponse === false) {
+            $info = curl_getinfo( $this->curlHandler);
+            curl_close( $this->curlHandler);
             throw new \Exception( 'Error occurred during curl exec. Additional info: ' . var_export( $info));
         }
-        curl_close( $this->_curl_handler);
+        curl_close( $this->curlHandler);
 
         // Decode JSON if we need to
-        if( $this->_isJson){
-            $this->_curl_response = json_decode( $this->_curl_response, $this->_returnAsArray);
+        if( $this->isJson){
+            $this->curlResponse = json_decode( $this->curlResponse, $this->returnAsArray);
         }
-        $this->_curl_response;
+        $this->curlResponse;
     }
 
     /**
      * @return mixed
      */
     public function getCurlResponse(){
-        return $this->_curl_response;
+        return $this->curlResponse;
     }
 
 }
