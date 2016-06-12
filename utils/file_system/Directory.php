@@ -19,7 +19,9 @@ class Directory {
      */
     public function __construct( $directoryPath) {
         $this->directory_afi = realpath( $directoryPath);
-        $this->scan();
+        if( $this->exists()){
+            $this->scan();
+        }
     }
 
     /**
@@ -50,12 +52,30 @@ class Directory {
     }
 
     /**
+     * Return TRUE if the repertory exists. FALSE otherwise
+     * @return bool
+     */
+    public function exists(){
+        return is_dir( $this->directory_afi);
+    }
+
+    /**
+     * Create the directory
+     * @param int $mode
+     * @return bool
+     */
+    public function create( $mode = 0777){
+        return @mkdir( $this->directory_afi, $mode, true);
+    }
+
+    /**
+     * Get the directory content (files & sub directories)
      * @return array
      */
     public function getContent(){
         return $this->content;
     }
-    
+
     /**
      * @param string $extension
      * @param bool   $includeSubDir
