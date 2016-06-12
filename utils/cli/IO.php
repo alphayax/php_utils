@@ -23,24 +23,24 @@ class IO {
 
     /**
      * Write message on stdout
-     * @param string    $_msg           Message
-     * @param int       $_indent_nb     Indentation ( = 0)
-     * @param bool      $_eol           Add a Carriage return ( = true)
-     * @param string    $_color         One of constant Cli::COLOR_*
+     * @param string $message    Message
+     * @param int    $indentNb   Indentation ( = 0)
+     * @param bool   $endOfLine  Add a Carriage return ( = true)
+     * @param string $color      One of constant Cli::COLOR_*
      */
-    public static function stdout( $_msg, $_indent_nb = 0, $_eol = true, $_color = self::COLOR_REGULAR){
-        self::_stream_write( self::STREAM_STDOUT, $_msg, $_indent_nb, $_eol, $_color);
+    public static function stdout( $message, $indentNb = 0, $endOfLine = true, $color = self::COLOR_REGULAR){
+        self::_stream_write( self::STREAM_STDOUT, $message, $indentNb, $endOfLine, $color);
     }
 
     /**
      * Write message on stderr
-     * @param string    $_msg           Message
-     * @param int       $_indent_nb     Indentation ( = 0)
-     * @param bool      $_eol           Add a Carriage return ( = true)
-     * @param string    $_color         One of constant Cli::COLOR_*
+     * @param string $message   Message
+     * @param int    $indentNb  Indentation ( = 0)
+     * @param bool   $endOfLine Add a Carriage return ( = true)
+     * @param string $color     One of constant Cli::COLOR_*
      */
-    public static function stderr( $_msg, $_indent_nb = 0, $_eol = true, $_color = self::COLOR_REGULAR){
-        self::_stream_write( self::STREAM_STDERR, $_msg, $_indent_nb, $_eol, $_color);
+    public static function stderr( $message, $indentNb = 0, $endOfLine = true, $color = self::COLOR_REGULAR){
+        self::_stream_write( self::STREAM_STDERR, $message, $indentNb, $endOfLine, $color);
     }
 
     /**
@@ -53,17 +53,17 @@ class IO {
 
     /**
      * Write to given stream
-     * @param string    $_stream        Filename or stream (php://*)
-     * @param string    $_msg           Message
-     * @param int       $_indent_nb     Indentation ( = 0)
-     * @param bool      $_eol           Add a Carriage return ( = true)
-     * @param string    $_color         One of constant Cli::COLOR_*
+     * @param string $stream    Filename or stream (php://*)
+     * @param string $message   Message
+     * @param int    $indentNb  Indentation ( = 0)
+     * @param bool   $endOfLine Add a Carriage return ( = true)
+     * @param string $color     One of constant Cli::COLOR_*
      */
-    private static function _stream_write( $_stream, $_msg, $_indent_nb, $_eol, $_color){
-        $indent = $_indent_nb   ? str_repeat( '  ', $_indent_nb)    : '';
-        $eol    = $_eol         ? PHP_EOL                           : '';
-        $text   = sprintf( $_color, $indent . $_msg . $eol);
-        file_put_contents( $_stream, $text);
+    private static function _stream_write( $stream, $message, $indentNb, $endOfLine, $color){
+        $indent = $indentNb   ? str_repeat( '  ', $indentNb) : '';
+        $eol    = $endOfLine  ? PHP_EOL                      : '';
+        $text   = sprintf( $color, $indent . $message . $eol);
+        file_put_contents( $stream, $text);
     }
 
 }
