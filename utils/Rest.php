@@ -14,6 +14,9 @@ class Rest {
     /** @var array */
     protected $curlResponse;
 
+    /** @var array */
+    protected $curlGetInfo;
+
     /** @var array of HTTP Headers */
     protected $httpHeaders = [];
 
@@ -36,7 +39,6 @@ class Rest {
         $this->curlHandler   = curl_init( $url);
         $this->isJson        = $isJson;
         $this->returnAsArray = $returnAsArray;
-
     }
 
     /**
@@ -101,7 +103,7 @@ class Rest {
     public function addHeader( $headerName, $headerContent) {
         $this->httpHeaders[ $headerName] = $headerContent;
     }
-    
+
     /**
      * Define the content type as "application/x-www-form-urlencoded"
      */
@@ -139,10 +141,10 @@ class Rest {
     private function exec(){
         $this->processHeaders();
         $this->curlResponse = curl_exec( $this->curlHandler);
+        $this->curlGetInfo  = curl_getinfo( $this->curlHandler);
         if( $this->curlResponse === false) {
-            $info = curl_getinfo( $this->curlHandler);
             curl_close( $this->curlHandler);
-            throw new \Exception( 'Error occurred during curl exec. Additional info: ' . var_export( $info));
+            throw new \Exception( 'Error occurred during curl exec. Additional info: ' . var_export( $this->curlGetInfo));
         }
         curl_close( $this->curlHandler);
 
