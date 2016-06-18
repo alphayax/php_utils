@@ -32,13 +32,12 @@ print_r( $rest->getCurlResponse());
 
 A class to parse parameters given to a script
 
-```php
-$Args = new GetOpt();
-$Args->addShortOpt( 'v', 'Enable verbose mode');
-$Args->addLongOpt( 'verbose'    , 'Enable verbose mode');
-$Args->parse();
+** Moved into stand alone project : [https://github.com/alphayax/get_opt](https://github.com/alphayax/get_opt) ** 
 
-$isVerbose = $Args->hasOption( 'v') || $Args->hasOption( 'verbose');
+Available on composer : 
+
+```
+    composer require alphayax/get_opt
 ```
 
 ### IO
