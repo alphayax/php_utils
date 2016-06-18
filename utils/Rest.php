@@ -132,6 +132,8 @@ class Rest {
             $HttpHeaders[] = "$httpHeaderName: $httpHeaderValue";
         }
         curl_setopt( $this->curlHandler, CURLOPT_HTTPHEADER, $HttpHeaders);
+        curl_setopt( $this->curlHandler, CURLINFO_HEADER_OUT, true);
+        curl_setopt( $this->curlHandler, CURLOPT_VERBOSE, true);
     }
 
     /**
