@@ -1,6 +1,6 @@
 {
   "name": "alphayax/php_utils",
-  "description": "Classes utilitaires pour PHP",
+  "description": "PHP Utilities classes",
   "minimum-stability": "dev",
   "prefer-stable": true,
   "license": "LGPL-2.1",
@@ -10,7 +10,12 @@
       "email": "alphayax@gmail.com"
     }
   ],
+  "require": {
+    "php": ">=5.5.0",
+    "ext-curl": "*"
+  },
   "require-dev": {
+    "alphayax/phpdoc_md": "^1.0.3",
     "phpunit/phpunit": "^4.8.9",
     "phpunit/phpcov": "2.*",
     "codacy/coverage": "dev-master"
@@ -20,7 +25,10 @@
   },
   "autoload": {
     "psr-4": {
-      "alphayax\\": "./"
+      "alphayax\\utils\\": "src/"
     }
+  },
+  "support": {
+    "issues": "https://github.com/alphayax/php_utils/issues"
   }
 }
