@@ -132,6 +132,12 @@ class Rest {
             $HttpHeaders[] = "$httpHeaderName: $httpHeaderValue";
         }
         curl_setopt( $this->curlHandler, CURLOPT_HTTPHEADER, $HttpHeaders);
+    }
+
+    /**
+     * Force curl verbosity
+     */
+    protected function addDebugInfos(){
         curl_setopt( $this->curlHandler, CURLINFO_HEADER_OUT, true);
         curl_setopt( $this->curlHandler, CURLOPT_VERBOSE, true);
     }
@@ -142,6 +148,7 @@ class Rest {
      */
     private function exec(){
         $this->processHeaders();
+        $this->addDebugInfos();
         $this->curlResponse = curl_exec( $this->curlHandler);
         $this->curlGetInfo  = curl_getinfo( $this->curlHandler);
         if( $this->curlResponse === false) {
