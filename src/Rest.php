@@ -26,7 +26,7 @@ class Rest {
     /** @var bool Send post data in Json or not */
     protected $sendInJson = true;
 
-    /** @var bool */
+    /** @var bool Return assoc array instead of \stdClass */
     protected $returnAsArray = true;
 
     /**
@@ -169,6 +169,22 @@ class Rest {
      */
     public function getCurlResponse(){
         return $this->curlResponse;
+    }
+
+    /**
+     * Force return as assoc array instead of \stdClass
+     * @param boolean $returnAsArray
+     */
+    public function setReturnAsArray( $returnAsArray = true) {
+        $this->returnAsArray = $returnAsArray;
+    }
+
+    /**
+     * Perform a json_decode on the request result
+     * @param boolean $isJson
+     */
+    public function setIsJson( $isJson = true) {
+        $this->isJson = $isJson;
     }
 
 }
