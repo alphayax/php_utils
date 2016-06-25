@@ -6,7 +6,7 @@
 [![pakagist](https://img.shields.io/packagist/v/alphayax/php_utils.svg)](https://packagist.org/packages/alphayax/php_utils)
 
 [![Travis](https://travis-ci.org/alphayax/php_utils.svg)](https://travis-ci.org/alphayax/php_utils)
-[![Coverage Status](https://coveralls.io/repos/github/alphayax/php_utils/badge.svg?branch=master)](https://coveralls.io/github/alphayax/php_utils?branch=master)
+[![Coverage Status](https://api.codacy.com/project/badge/Coverage/8bfe4b0f7bbb414b94502353e520cbac)](https://www.codacy.com/app/alphayax/php_utils?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=alphayax/php_utils&amp;utm_campaign=Badge_Coverage)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8bfe4b0f7bbb414b94502353e520cbac)](https://www.codacy.com/app/alphayax/php_utils?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=alphayax/php_utils&amp;utm_campaign=Badge_Grade)
 
 [![License](https://poser.pugx.org/alphayax/php_utils/license)](https://packagist.org/packages/alphayax/php_utils)
