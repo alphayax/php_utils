@@ -21,7 +21,8 @@
     "codacy/coverage": "dev-master"
   },
   "suggest": {
-    "alphayax/get_opt": "^1.0.0"
+    "alphayax/get_opt": "^1.0.0",
+    "alphayax/rest": "^1.0.0"
   },
   "autoload": {
     "psr-4": {

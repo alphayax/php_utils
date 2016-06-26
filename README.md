@@ -16,14 +16,14 @@ A set of PHP utilities class
 
 ## Rest
 
-A tiny class using curl in object oriented style
+A tiny class using curl in object object oriented style
 
-```php
-$rest = new \alphayax\utils\Rest( 'https://api.github.com/users/alphayax/repos');
-$rest->addHeader( 'User-Agent', 'alphayax-php_utils');
-$rest->GET();
+**Moved into stand alone project : [https://github.com/alphayax/rest](https://github.com/alphayax/rest)**
 
-print_r( $rest->getCurlResponse());
+Available on composer : 
+
+```
+    composer require alphayax/rest
 ```
 
 ## Cli
@@ -32,7 +32,7 @@ print_r( $rest->getCurlResponse());
 
 A class to parse parameters given to a script
 
-** Moved into stand alone project : [https://github.com/alphayax/get_opt](https://github.com/alphayax/get_opt) ** 
+**Moved into stand alone project : [https://github.com/alphayax/get_opt](https://github.com/alphayax/get_opt)** 
 
 Available on composer : 
 
@@ -46,4 +46,4 @@ A class to provide stdout & stderr functions with color
 
 ## File System
 
-A set of classes for files and directories
+A set of classes for files and directories management
